@@ -9,7 +9,9 @@ public class FeignConfig {
 
     @Bean
     public Request.Options options() {
-        return new Request.Options(1000, 3000);
+        return new Request.Options(1000, 3000){
+            private String name = "customer";
+        };
     }
 
 }
