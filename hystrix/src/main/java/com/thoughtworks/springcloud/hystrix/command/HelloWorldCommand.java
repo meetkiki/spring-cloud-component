@@ -18,7 +18,7 @@ public class HelloWorldCommand extends HystrixCommand<String> {
     @Override
     protected String run() throws Exception {
         if (Objects.isNull(name)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("name is null.");
         }
         return "hello " + name;
     }
