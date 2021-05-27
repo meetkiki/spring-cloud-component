@@ -24,6 +24,8 @@ public class FeignController {
 
     @PostMapping("/demo1")
     public String postDemo1(@RequestBody String body, @RequestHeader(value = "auth", required = false) String auth) {
+
+
         log.info("body === " + body);
         log.info("auth === " + auth);
         return "success body:" + body;
