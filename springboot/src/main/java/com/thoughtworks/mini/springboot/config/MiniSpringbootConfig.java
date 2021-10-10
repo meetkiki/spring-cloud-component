@@ -11,7 +11,6 @@ import java.util.List;
 
 /**
  * 简单版本springboot的配置类
- * Created by xsls on 2019/8/16.
  */
 @Configuration
 @ComponentScan(basePackages = {"com.thoughtworks.mini"})

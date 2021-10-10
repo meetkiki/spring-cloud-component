@@ -3,6 +3,7 @@ package com.thoughtworks.mini.springboot.controller;
 import com.thoughtworks.mini.springboot.entity.Person;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +11,7 @@ import java.util.Map;
 /**
  * Created by xsls on 2019/8/18.
  */
-//@RestController
+@RestController
 public class SpringBootController {
 
     @RequestMapping("/getUser")

@@ -26,7 +26,6 @@ public class MiniSpringBootWebApplicationInitializer implements WebApplicationIn
 
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
         context.register(MiniSpringbootConfig.class);
-
         context.setServletContext(servletContext);
 
         context.refresh();

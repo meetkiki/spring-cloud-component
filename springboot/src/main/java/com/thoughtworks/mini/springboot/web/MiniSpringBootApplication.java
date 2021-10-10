@@ -27,6 +27,7 @@ public class MiniSpringBootApplication {
             helloServlet.addMapping("/hello");
         }, null);
 
+
         tomcat.start();  // 启动tomcat
         tomcat.getServer().await(); // 挂起tomcat
     }
