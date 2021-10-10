@@ -5,7 +5,7 @@ import com.thoughtworks.mini.springboot.web.MiniSpringBootApplication;
 
 public class MainStarter {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         MiniSpringBootApplication.run();
     }
 }
