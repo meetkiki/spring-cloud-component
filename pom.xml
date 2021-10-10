@@ -25,6 +25,7 @@
     <modules>
         <module>feign</module>
         <module>hystrix</module>
+        <module>other</module>
     </modules>
 
     <dependencies>
