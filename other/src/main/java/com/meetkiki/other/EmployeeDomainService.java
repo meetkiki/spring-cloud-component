@@ -1,11 +1,8 @@
 package com.meetkiki.other;
 
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.util.List;
 
-@Slf4j
 public class EmployeeDomainService {
 
     private final EmployeeRepository employeeRepository;
@@ -22,20 +19,23 @@ public class EmployeeDomainService {
 
     /**
      * 入职员工
+     *
      * @param createEmployeeCommand
      * @return
      */
     public Employee create(CreateEmployeeCommand createEmployeeCommand) {
-        RankNode node = nodeDomainService.create(rankNodeFactory.createNode());
+        // RankNode node = nodeDomainService.create(rankNodeFactory.createNode());
         // 装换成员工
-        Employee employee = Mapper.convertToEmployee(createEmployeeCommand, node);
+        // Employee employee = Mapper.convertToEmployee(createEmployeeCommand, node);
 
-        return employeeRepository.save(employee);
+        //return employeeRepository.save(employee);
+        return null;
     }
 
 
     /**
      * 建立汇报关系
+     *
      * @param createEmployeeReportCommand 包含当前员工Id,上下级员工Id
      * @return
      */
@@ -62,6 +62,7 @@ public class EmployeeDomainService {
 
     /**
      * 员工离职
+     *
      * @param employeeResignCommand
      */
     public void employeeResign(EmployeeResignCommand employeeResignCommand) {
@@ -90,6 +91,7 @@ public class EmployeeDomainService {
 
     /**
      * 解除关联节点关系
+     *
      * @param employee
      * @param reportEmployee
      */
