@@ -21,7 +21,7 @@ public class MiniSpringBootApplication {
 
         Context context = tomcat.addContext("/", null);
 
-        //ServletContextInitializer
+        // ServletContextInitializer
         context.addServletContainerInitializer((c, servletContext) -> {
             ServletRegistration.Dynamic helloServlet = servletContext.addServlet("ServletName", new HelloServlet());
             helloServlet.addMapping("/hello");

@@ -13,7 +13,7 @@ import java.util.List;
  * 简单版本springboot的配置类
  */
 @Configuration
-@ComponentScan(basePackages = {"com.thoughtworks.mini"})
+@ComponentScan(basePackages = {"com.thoughtworks.mini.springboot"})
 @EnableWebMvc
 public class MiniSpringbootConfig implements WebMvcConfigurer {
 

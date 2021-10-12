@@ -6,7 +6,6 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
 /**
@@ -20,8 +19,9 @@ import javax.servlet.ServletRegistration;
  * detectedScis = loader.load(ServletContainerInitializer.class);
  */
 public class MiniSpringBootWebApplicationInitializer implements WebApplicationInitializer {
+//public class MiniSpringBootWebApplicationInitializer{
 
-    public void onStartup(ServletContext servletContext) throws ServletException {
+    public void onStartup(ServletContext servletContext) {
         System.out.println("初始化MiniWebApplicationInitializer...");
 
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();

@@ -8,11 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by xsls on 2019/8/18.
- */
 @RestController
-public class SpringBootController {
+public class PersonController {
 
     @RequestMapping("/getUser")
     public Person getPerson(@RequestBody Person person) {

@@ -154,3 +154,28 @@ D:\WORKSPACE\SPRING-CLOUD-COMPONENT\SPRINGBOOT\TARGET\SPRINGBOOT-0.0.1-SNAPSHOT
                 \---util
                         SystemPropertyUtils.class
                         
+
+
+
+springboot-0.0.1-SNAPSHOT.jar
++---BOOT-INF
+|   |   classpath.idx
+|   |   layers.idx
+|   |
+|   +---classes
+|   |   \---用户程序启动类
+|   |
+|   \---lib
+|        第三方依赖包...
+|
++---META-INF
+|   |   MANIFEST.MF
+|   |
+|   \---maven
+|       \---pom文件相关
+|
+\---org
+    \---springframework
+        \---boot
+            \---loader
+                SpringBoot程序启动类

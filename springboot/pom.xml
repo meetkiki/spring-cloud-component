@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-<!--    <packaging>war</packaging>-->
+    <packaging>war</packaging>
     <!--打包方式修改为war-->
 
     <artifactId>springboot</artifactId>
@@ -39,7 +39,7 @@
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
-<!--            <scope>provided</scope>-->
+            <scope>provided</scope>
             <!--设置为provided让其不参与打包-->
         </dependency>
         <!-- 加载fat jar的源码包-->
