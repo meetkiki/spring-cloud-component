@@ -18,6 +18,6 @@ import java.lang.annotation.Target;
 @Conditional(OnBeanPresentCondition.class)
 public @interface ConditionalOnBeanPresent {
 
-    String[] value();
+    Class<?>[] value();
 
 }

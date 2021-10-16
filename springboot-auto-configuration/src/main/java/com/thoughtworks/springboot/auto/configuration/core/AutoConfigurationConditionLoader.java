@@ -14,7 +14,8 @@ import java.util.Map;
 import java.util.Properties;
 
 public class AutoConfigurationConditionLoader {
-    protected static final String PATH = "META-INF/spring-autoconfig.properties";
+
+    protected static final String PATH = "META-INF/spring-autoconfigure-metadata.properties";
 
     private AutoConfigurationConditionLoader() {
     }
@@ -26,7 +27,7 @@ public class AutoConfigurationConditionLoader {
     public static synchronized List<String> getCondition(String className, String key) {
         if (CONFIG_CONDITIONS == null) {
             CONFIG_CONDITIONS = new HashMap<>();
-            // 加载classPath下所有spring-autoconfig.properties文件的条件配置
+            // 加载classPath下所有spring-autoconfigure-metadata.properties文件的条件配置
             loadConfigConditions(PATH);
         }
         return CONFIG_CONDITIONS.getOrDefault(className + "." + key, Collections.emptyList());

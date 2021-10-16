@@ -11,7 +11,9 @@ import org.springframework.context.annotation.DeferredImportSelector;
 import org.springframework.core.io.support.SpringFactoriesLoader;
 import org.springframework.core.type.AnnotationMetadata;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +27,10 @@ public class AutoConfigureImportSelector implements DeferredImportSelector, Bean
     public String[] selectImports(AnnotationMetadata importingClassMetadata) {
         List<String> autoConfigs = SpringFactoriesLoader.loadFactoryNames(AutoConfiguration.class, beanClassLoader);
 
+        // 去重
+        autoConfigs = new ArrayList<>(new LinkedHashSet<>(autoConfigs));
+
+        // 按照条件过滤
         final List<SpringBootLoadFilter> springBootLoadFilters = getSpringBootLoadFilters();
         for (SpringBootLoadFilter springBootLoadFilter : springBootLoadFilters) {
             springBootLoadFilter.match(beanFactory, autoConfigs);

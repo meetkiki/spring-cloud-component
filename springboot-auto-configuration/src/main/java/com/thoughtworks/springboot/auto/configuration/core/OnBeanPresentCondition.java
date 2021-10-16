@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class OnBeanPresentCondition implements SpringBootLoadFilter {
 
@@ -31,7 +32,7 @@ public class OnBeanPresentCondition implements SpringBootLoadFilter {
             final List<String> beans = AutoConfigurationConditionLoader.getCondition(autoConfigurationClass, "OnBeanPresent");
 
             // 判断
-            final boolean match = beans.stream().allMatch(beanFactory::containsBeanDefinition);
+            final boolean match = beans.stream().allMatch(beanFactory::containsBean);
 
             // 如果不满足 移除加载
             if (!match){
@@ -56,10 +57,10 @@ public class OnBeanPresentCondition implements SpringBootLoadFilter {
         if (annotationAttributes == null) {
             return false;
         }
-        final String[] beanNames = (String[]) annotationAttributes.getOrDefault("value", new String[]{});
-        final BeanDefinitionRegistry registry = context.getRegistry();
+        final Class<?>[] beans = (Class<?>[]) annotationAttributes.getOrDefault("value", new Class<?>[]{});
+        final ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
 
-        return Arrays.stream(beanNames).allMatch(registry::containsBeanDefinition);
+        return Arrays.stream(beans).allMatch(beanName -> Objects.requireNonNull(beanFactory).getBeanNamesForType(beanName).length != 0);
     }
 
 
