@@ -26,7 +26,8 @@
         <module>feign</module>
         <module>hystrix</module>
         <module>other</module>
-        <module>springboot</module>
+        <module>springboot-start-principle</module>
+        <module>springboot-auto-configuration</module>
     </modules>
 
     <dependencies>

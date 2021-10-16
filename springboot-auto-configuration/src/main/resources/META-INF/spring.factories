@@ -1,0 +1,11 @@
+
+# Auto Configure
+com.thoughtworks.springboot.auto.configuration.annotation.AutoConfiguration=\
+com.thoughtworks.springboot.auto.configuration.config.AutoErrorPageConfiguration
+
+
+
+# Auto Configure filter
+com.thoughtworks.springboot.auto.configuration.core.SpringBootLoadFilter=\
+com.thoughtworks.springboot.auto.configuration.core.OnBeanPresentCondition,\
+com.thoughtworks.springboot.auto.configuration.core.OnClassPathClassCondition

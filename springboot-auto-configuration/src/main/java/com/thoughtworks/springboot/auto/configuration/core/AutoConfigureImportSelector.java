@@ -1,0 +1,76 @@
+package com.thoughtworks.springboot.auto.configuration.core;
+
+
+import com.thoughtworks.springboot.auto.configuration.annotation.AutoConfiguration;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanClassLoaderAware;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.context.annotation.DeferredImportSelector;
+import org.springframework.core.io.support.SpringFactoriesLoader;
+import org.springframework.core.type.AnnotationMetadata;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class AutoConfigureImportSelector implements DeferredImportSelector, BeanFactoryAware, BeanClassLoaderAware {
+
+    private ConfigurableListableBeanFactory beanFactory;
+
+    private ClassLoader beanClassLoader;
+
+    @Override
+    public String[] selectImports(AnnotationMetadata importingClassMetadata) {
+        List<String> autoConfigs = SpringFactoriesLoader.loadFactoryNames(AutoConfiguration.class, beanClassLoader);
+
+        final List<SpringBootLoadFilter> springBootLoadFilters = getSpringBootLoadFilters();
+        for (SpringBootLoadFilter springBootLoadFilter : springBootLoadFilters) {
+            springBootLoadFilter.match(beanFactory, autoConfigs);
+        }
+
+        return autoConfigs.toArray(new String[0]);
+    }
+
+    @Override
+    public Class<? extends Group> getImportGroup() {
+        return AutoConfigureGroup.class;
+    }
+
+
+    private List<SpringBootLoadFilter> getSpringBootLoadFilters() {
+        return SpringFactoriesLoader.loadFactories(SpringBootLoadFilter.class, beanClassLoader);
+    }
+
+
+    private static class AutoConfigureGroup implements Group {
+
+        private Entry[] entries;
+
+        @Override
+        public void process(AnnotationMetadata metadata, DeferredImportSelector selector) {
+            // 通过SpringFactoriesLoader 加载所有classpath下的META-INF/spring.factories文件配置的自动装配类
+            final String[] selectImports = selector.selectImports(metadata);
+            this.entries = Arrays.stream(selectImports).map(select -> new Entry(metadata, select)).toArray(Entry[]::new);
+        }
+
+        @Override
+        public Iterable<Entry> selectImports() {
+            // 注解排序 Order 等
+            return Arrays.stream(entries).sorted().collect(Collectors.toList());
+        }
+    }
+
+
+    @Override
+    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+        this.beanFactory = (ConfigurableListableBeanFactory) beanFactory;
+    }
+
+
+    @Override
+    public void setBeanClassLoader(ClassLoader classLoader) {
+        this.beanClassLoader = classLoader;
+    }
+}

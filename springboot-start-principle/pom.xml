@@ -12,7 +12,7 @@
 <!--    <packaging>war</packaging>-->
     <!--打包方式修改为war-->
 
-    <artifactId>springboot</artifactId>
+    <artifactId>springboot-start-principle</artifactId>
 
 
     <dependencies>

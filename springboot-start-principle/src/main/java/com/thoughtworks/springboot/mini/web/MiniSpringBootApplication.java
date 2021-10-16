@@ -4,13 +4,15 @@ import com.thoughtworks.springboot.mini.servlet.HelloServlet;
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
 import org.apache.catalina.startup.Tomcat;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 import javax.servlet.ServletRegistration;
 
 public class MiniSpringBootApplication {
 
 
-    public static void run() throws Exception {
+    public static void run(Class<?> mainClz) throws Exception {
         Tomcat tomcat = new Tomcat();
         tomcat.setBaseDir("target"); // 工作目录
 
@@ -23,6 +25,12 @@ public class MiniSpringBootApplication {
 
         // ServletContextInitializer
         context.addServletContainerInitializer((c, servletContext) -> {
+            AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
+            applicationContext.register(mainClz);
+            applicationContext.setServletContext(servletContext);
+            applicationContext.refresh();
+
+
             ServletRegistration.Dynamic helloServlet = servletContext.addServlet("ServletName", new HelloServlet());
             helloServlet.addMapping("/hello");
         }, null);
