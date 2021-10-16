@@ -1,6 +1,6 @@
-package com.thoughtworks.mini.springboot.controller;
+package com.thoughtworks.springboot.mini.controller;
 
-import com.thoughtworks.mini.springboot.entity.Person;
+import com.thoughtworks.springboot.mini.entity.Person;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

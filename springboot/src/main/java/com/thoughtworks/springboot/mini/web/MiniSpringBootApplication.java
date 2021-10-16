@@ -1,6 +1,6 @@
-package com.thoughtworks.mini.springboot.web;
+package com.thoughtworks.springboot.mini.web;
 
-import com.thoughtworks.mini.springboot.servlet.HelloServlet;
+import com.thoughtworks.springboot.mini.servlet.HelloServlet;
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
 import org.apache.catalina.startup.Tomcat;

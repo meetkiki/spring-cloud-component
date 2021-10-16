@@ -1,8 +1,7 @@
-package com.thoughtworks.mini.springboot.web;
+package com.thoughtworks.springboot.mini.web;
 
-import com.thoughtworks.mini.springboot.config.MiniSpringbootConfig;
+import com.thoughtworks.springboot.mini.config.MiniSpringbootConfig;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 //public class TomcatStartSpringboot extends SpringBootServletInitializer {
 public class TomcatStartSpringboot{

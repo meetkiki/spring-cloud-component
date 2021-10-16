@@ -1,4 +1,4 @@
-package com.thoughtworks.mini.springboot.entity;
+package com.thoughtworks.springboot.mini.entity;
 
 public class Person {
 

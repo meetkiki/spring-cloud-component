@@ -1,4 +1,4 @@
-package com.thoughtworks.mini.springboot.servlet;
+package com.thoughtworks.springboot.mini.servlet;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

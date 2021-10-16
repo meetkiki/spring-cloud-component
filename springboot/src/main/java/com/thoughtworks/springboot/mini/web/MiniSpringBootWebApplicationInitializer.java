@@ -1,6 +1,6 @@
-package com.thoughtworks.mini.springboot.web;
+package com.thoughtworks.springboot.mini.web;
 
-import com.thoughtworks.mini.springboot.config.MiniSpringbootConfig;
+import com.thoughtworks.springboot.mini.config.MiniSpringbootConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
