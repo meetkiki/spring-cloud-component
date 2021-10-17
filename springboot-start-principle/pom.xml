@@ -53,6 +53,12 @@
             <artifactId>springboot-auto-configuration</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.thoughtworks.springcloud</groupId>
+            <artifactId>thread-pool-starter</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <properties>

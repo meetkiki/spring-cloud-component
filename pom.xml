@@ -28,6 +28,7 @@
         <module>other</module>
         <module>springboot-start-principle</module>
         <module>springboot-auto-configuration</module>
+        <module>thread-pool-starter</module>
     </modules>
 
     <dependencies>

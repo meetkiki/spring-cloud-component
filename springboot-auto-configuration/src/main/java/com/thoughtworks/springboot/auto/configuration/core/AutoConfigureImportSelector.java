@@ -8,6 +8,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.annotation.DeferredImportSelector;
+import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.io.support.SpringFactoriesLoader;
 import org.springframework.core.type.AnnotationMetadata;
 
@@ -17,7 +18,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AutoConfigureImportSelector implements DeferredImportSelector, BeanFactoryAware, BeanClassLoaderAware {
+public class AutoConfigureImportSelector implements ImportSelector, BeanFactoryAware, BeanClassLoaderAware {
 
     private ConfigurableListableBeanFactory beanFactory;
 
@@ -39,8 +40,7 @@ public class AutoConfigureImportSelector implements DeferredImportSelector, Bean
         return autoConfigs.toArray(new String[0]);
     }
 
-    @Override
-    public Class<? extends Group> getImportGroup() {
+    public Class<? extends DeferredImportSelector.Group> getImportGroup() {
         return AutoConfigureGroup.class;
     }
 
@@ -50,7 +50,7 @@ public class AutoConfigureImportSelector implements DeferredImportSelector, Bean
     }
 
 
-    private static class AutoConfigureGroup implements Group {
+    private static class AutoConfigureGroup implements DeferredImportSelector.Group {
 
         private Entry[] entries;
 
@@ -64,7 +64,7 @@ public class AutoConfigureImportSelector implements DeferredImportSelector, Bean
         @Override
         public Iterable<Entry> selectImports() {
             // 注解排序 Order 等
-            return Arrays.stream(entries).sorted().collect(Collectors.toList());
+            return Arrays.stream(entries).collect(Collectors.toList());
         }
     }
 

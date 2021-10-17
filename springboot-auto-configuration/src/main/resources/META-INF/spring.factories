@@ -1,11 +1,13 @@
 
 # Auto Configure
 com.thoughtworks.springboot.auto.configuration.annotation.AutoConfiguration=\
-com.thoughtworks.springboot.auto.configuration.config.AutoErrorPageConfiguration
+com.thoughtworks.springboot.auto.configuration.config.AutoErrorPageConfiguration,\
+com.thoughtworks.springboot.auto.configuration.config.AutoThreadPoolConfiguration
 
 
 
 # Auto Configure filter
 com.thoughtworks.springboot.auto.configuration.core.SpringBootLoadFilter=\
 com.thoughtworks.springboot.auto.configuration.core.OnBeanPresentCondition,\
+com.thoughtworks.springboot.auto.configuration.core.OnMissBeanCondition,\
 com.thoughtworks.springboot.auto.configuration.core.OnClassPathClassCondition
