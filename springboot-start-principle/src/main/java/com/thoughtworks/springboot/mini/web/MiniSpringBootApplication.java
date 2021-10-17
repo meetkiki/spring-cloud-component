@@ -15,7 +15,7 @@ import javax.servlet.ServletRegistration;
 public class MiniSpringBootApplication {
 
 
-    public static void run(Class<?> mainClz) throws Exception {
+    public static void miniRun(Class<?> mainClz) throws Exception {
         Tomcat tomcat = new Tomcat();
         tomcat.setBaseDir("target"); // 工作目录
 

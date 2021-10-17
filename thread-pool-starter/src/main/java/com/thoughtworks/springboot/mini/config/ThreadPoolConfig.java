@@ -8,7 +8,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-//@Configuration
+@Configuration
 public class ThreadPoolConfig {
 
     private final ApplicationContext context;

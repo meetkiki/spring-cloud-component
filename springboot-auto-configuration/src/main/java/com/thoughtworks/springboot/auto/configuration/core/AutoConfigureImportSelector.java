@@ -8,7 +8,6 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.annotation.DeferredImportSelector;
-import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.io.support.SpringFactoriesLoader;
 import org.springframework.core.type.AnnotationMetadata;
 
@@ -18,7 +17,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AutoConfigureImportSelector implements ImportSelector, BeanFactoryAware, BeanClassLoaderAware {
+public class AutoConfigureImportSelector implements DeferredImportSelector, BeanFactoryAware, BeanClassLoaderAware {
 
     private ConfigurableListableBeanFactory beanFactory;
 

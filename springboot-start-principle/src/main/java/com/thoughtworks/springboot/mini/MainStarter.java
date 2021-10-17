@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 public class MainStarter {
 
     public static void main(String[] args) throws Exception {
-        MiniSpringBootApplication.run(MainStarter.class);
+        MiniSpringBootApplication.miniRun(MainStarter.class);
     }
 
 }
