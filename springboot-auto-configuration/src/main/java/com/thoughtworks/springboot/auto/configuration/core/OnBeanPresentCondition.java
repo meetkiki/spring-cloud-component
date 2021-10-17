@@ -4,6 +4,7 @@ import com.thoughtworks.springboot.auto.configuration.annotation.ConditionalOnBe
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.annotation.ConditionContext;
+import org.springframework.context.annotation.ConfigurationCondition;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.core.type.MethodMetadata;
@@ -14,7 +15,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class OnBeanPresentCondition implements SpringBootLoadFilter {
+public class OnBeanPresentCondition implements SpringBootLoadFilter,ConfigurationCondition {
+
+    /**
+     * 实现ConfigurationCondition 设置判断的时机
+     *  PARSE_CONFIGURATION 当解析CONFIGURATION时
+     *  REGISTER_BEAN 注册成bean定义
+     */
+    @Override
+    public ConfigurationCondition.ConfigurationPhase getConfigurationPhase() {
+        return ConfigurationCondition.ConfigurationPhase.REGISTER_BEAN;
+    }
 
     /**
      * 自定义的过滤方法
